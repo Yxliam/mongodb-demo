@@ -1,0 +1,38 @@
+<% include header.html %>
+
+  	<div>
+  		<ul>
+  			<li>
+  				用户名：
+  				<input type="text" name="username">
+  			 </li>
+  			<li>
+  				密码：
+  				<input type="password" name="password">
+  			</li>
+  			<li>
+  				<input type="button" id="J-sub" value="注册">
+  			</li>
+  		</ul>
+  	</div>
+  	<script type="text/javascript">
+  			$(function(){
+  				$('#J-sub').on('click',function(){
+  					var data = {
+  						username:$("input[name='username']").val(),
+  						password:$("input[name='password']").val()
+  					}
+  					$.ajax({
+  						url:'/register',
+  						type:'post',
+  						data:data
+  					}).then(function(res){
+  						if(res.code == 2){
+  							window.location.href = '/login'
+  						}
+  					})
+  				})
+  			})
+  	</script>
+  <% include footer.html %>
+
